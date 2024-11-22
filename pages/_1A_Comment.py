@@ -1,7 +1,6 @@
 import streamlit as st
 st.set_page_config(layout="wide")
 st.markdown("""
-
 <style>
     @import url('https://fonts.googleapis.com/css?family=Comfortaa:wght@100&display=swap'); 
 
@@ -17,6 +16,7 @@ st.markdown("""
 
     body{
         font-size: 18px;
+        gap: 20px;
     }
 
     [role=radiogroup]{
@@ -41,33 +41,7 @@ st.markdown("""
     margin-right: auto;
         width:200px;
             }
-            
-    .bubble {
-  --r: 1em;  /* the radius */
-  --t: 1.5em; /* the size of the tail */
-  
-  max-width: 400px;
-  padding: 1em;
-  border-inline: var(--t) solid #0000;
-  border-radius: calc(var(--r) + var(--t))/var(--r);
-  mask: 
-    radial-gradient(100% 100% at var(--_p) 0,#0000 99%,#000 102%) 
-      var(--_p) 100%/var(--t) var(--t) no-repeat,
-    linear-gradient(#000 0 0) padding-box;
-  background: #62cbec;
-  color: #fff;
-}
-.left {
-  --_p: 0;
-  border-bottom-left-radius: 0 0;
-  place-self: start;
-}
-.right {
-  --_p: 100%;
-  border-bottom-right-radius: 0 0;
-  place-self: end;
-}
 </style>
 """, unsafe_allow_html=True)
-st.markdown("""<div class="bubble right">test abcdef</div>""",unsafe_allow_html=True)
+
 

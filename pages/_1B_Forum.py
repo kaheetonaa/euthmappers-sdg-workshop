@@ -17,6 +17,7 @@ st.markdown("""
 
     body{
         font-size: 18px;
+        gap: 20px;
     }
 
     [role=radiogroup]{
@@ -69,5 +70,8 @@ st.markdown("""
 }
 </style>
 """, unsafe_allow_html=True)
-st.markdown("""<div class="bubble right">test abcdef</div>""",unsafe_allow_html=True)
+st.markdown("""<div class="bubble right">A: test abcdef abdcdefeghhh</div>""",unsafe_allow_html=True)
+st.write('')
+st.markdown("""<div class="bubble left">test abcdef abdcdefeghhh</div>""",unsafe_allow_html=True)
+st.write('')
 

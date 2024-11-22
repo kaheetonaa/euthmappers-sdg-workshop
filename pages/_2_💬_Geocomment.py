@@ -4,6 +4,8 @@ import geopandas as gpd
 import folium
 from folium.features import GeoJsonPopup
 from streamlit_folium import st_folium
+from pymongo import MongoClient
+
 
 st.set_page_config(layout="wide")
 
@@ -16,6 +18,7 @@ client = init_connection()
 db=client['EuthMappers_Geocomment']
 collection=db['EuthMappers_Geocomment']
 
+
 st.markdown("""
 
 <style>
@@ -26,8 +29,8 @@ st.markdown("""
         
     }
     div[data-baseweb="select"] > div {
-    background-color: #62cbec;
-            color:white;
+    background-color: #62cbec10;
+            color:black;
             font-family: 'Comfortaa', sans-serif;
     }
 
@@ -75,31 +78,6 @@ def load_json_from_url(url):
         print(f"Invalid JSON response: {e}")
         raise
 
-
-options = st.selectbox(
-    "Choose the organization",
-    ["None","UN+Mappers", "Missing%20Maps", "M%C3%A9decins%20Sans%20Fronti%C3%A8res%20%28MSF%29%20","USAID"])
-# Example usage:
-url = "https://tasking-manager-tm4-production-api.hotosm.org/api/v2/projects/?orderBy=id&orderByType=ASC&mappingTypesExact=false&page=1&createdByMe=false&mappedByMe=false&favoritedByMe=false&managedByMe=false&basedOnMyInterests=false&omitMapResults=false&downloadAsCSV=false&organisationName="+options
-archived=st.checkbox('Archived projects')
-if archived:
-    url=url+"&projectStatuses=ARCHIVED"
-
-if options!="None":
-    data = load_json_from_url(url)
-    geom_data=data['mapResults']['features']
-    gdf = gpd.GeoDataFrame.from_features(geom_data).set_crs(epsg=4326)
-    gdf['x']=gdf.geometry.x
-    gdf['y']=gdf.geometry.y
-    gdf['dummy']=1
-    gdf['projecId-str']=gdf['projectId'].map(str)
-
-if 'location' not in st.session_state:
-    st.session_state.location = [0, 0]
-if 'zoom' not in st.session_state:
-    st.session_state.zoom = 5
-
-
 def style_function(feature):
     props = feature.get('properties')
     markup = f"""
@@ -117,13 +95,12 @@ def style_function(feature):
 def drawMap(popup,location,zoom):
     map = folium.Map(
     location=location, zoom_start=zoom, max_zoom=21)
-    if options!="None":
+    if options!=0:
         org_json = folium.GeoJson(data=gdf,
                                 marker=folium.Marker(icon=folium.DivIcon()),
                                 style_function=style_function,
         popup=popup)
         org_json.add_to(map)
-    
     st_map= st_folium(
     map,
     width='100%',
@@ -138,12 +115,45 @@ def drawMap(popup,location,zoom):
         link="https://tasks.hotosm.org/projects/"+st.session_state.last_object_clicked_popup
         st.link_button("Go to project", str(link).replace('\n', '').replace(' ','').replace('projecId-str',''))
     else:
-        st.write('nothing is clicked')
+        st.write('No project has been selected')
+
+org_str=["None","UN+Mappers", "Missing%20Maps", "M%C3%A9decins%20Sans%20Fronti%C3%A8res%20%28MSF%29%20","USAID","HOT"]
+org_name=["None","UN Mappers", "Missing Maps", "Médecins Sans Frontières","USAID","HOT"]
+org_index = list(range(len(org_name)))
+
+#form
 comment = st.text_input("Zoom to an area where you think suitable for the project then write down your comment. Finally hit Enter to submit", "")
-if comment and comment!="":
-    st.write("✅You select the area at coordinate",str(st.session_state.location),'at the zoom of',str(st.session_state.zoom),'because of', comment)
-    post={'test':'test'}
-    collection.insert_one(post)
+
+if st.button('Submit'):
+    if comment!="":
+        st.write("✅You select the area at coordinate",str(st.session_state.location),'at the zoom of',str(st.session_state.zoom),'because of', comment)
+        post={'bounds':'POLYGON (('+str(st.session_state.bounds['_southWest']['lng'])+' '+str(st.session_state.bounds['_southWest']['lat'])+','+str(st.session_state.bounds['_southWest']['lng'])+' '+str(st.session_state.bounds['_northEast']['lat'])+','+str(st.session_state.bounds['_northEast']['lng'])+' '+str(st.session_state.bounds['_northEast']['lat'])+','+str(st.session_state.bounds['_northEast']['lng'])+' '+str(st.session_state.bounds['_southWest']['lat'])+','+str(st.session_state.bounds['_southWest']['lng'])+' '+str(st.session_state.bounds['_southWest']['lat'])+'))','comment':comment,'center':'POINT ('+str(st.session_state.location[1])+' '+str(st.session_state.location[0])+')','zoom':st.session_state.zoom}
+        collection.insert_one(post)
+
+#referencing
+options = st.selectbox(
+    "Choose the organization to see their active/archived projects",options=org_index,format_func=lambda x: org_name[x]
+)
+
+url = "https://tasking-manager-tm4-production-api.hotosm.org/api/v2/projects/?orderBy=id&orderByType=ASC&mappingTypesExact=false&page=1&createdByMe=false&mappedByMe=false&favoritedByMe=false&managedByMe=false&basedOnMyInterests=false&omitMapResults=false&downloadAsCSV=false&organisationName="+org_str[options]
+archived=st.checkbox('Archived projects')
+if archived:
+    url=url+"&projectStatuses=ARCHIVED"
+
+if options!=0:
+    data = load_json_from_url(url)
+    geom_data=data['mapResults']['features']
+    gdf = gpd.GeoDataFrame.from_features(geom_data).set_crs(epsg=4326)
+    gdf['x']=gdf.geometry.x
+    gdf['y']=gdf.geometry.y
+    gdf['dummy']=1
+    gdf['projecId-str']=gdf['projectId'].map(str)
+
+if 'location' not in st.session_state:
+    st.session_state.location = [0, 0]
+if 'zoom' not in st.session_state:
+    st.session_state.zoom = 5
+#map
 a=drawMap(popup,st.session_state.location,st.session_state.zoom)
 
 
