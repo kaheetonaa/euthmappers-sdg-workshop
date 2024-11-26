@@ -64,6 +64,14 @@ comment = st.text_input("What is Sustainable Development?", "")
 if submit:
     print('haha')
 
+if st.button('Submit'):
+    if (comment!="")&(school!=None):
+        st.write(school, comment)
+        post={'school':school,'comment':comment}
+        collection.insert_one(post)
+    else:
+        st.write('you have to select your school and write your comment!')
+
 
 
 
