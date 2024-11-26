@@ -104,7 +104,7 @@ def drawMap(popup,location,zoom):
     st_map= st_folium(
     map,
     width='100%',
-    height=400
+    height=450
     )
     st.session_state.location=[st_map['center']['lat'],st_map['center']['lng']]
     st.session_state.zoom=st_map['zoom']
