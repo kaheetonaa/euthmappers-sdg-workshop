@@ -83,6 +83,8 @@ db=client['EuthMappers_Forum_241126']
 collection=db['EuthMappers_Forum_241126']
 result=pd.DataFrame(list(collection.find().sort("_id", -1).limit(50)))
 
+st.title('What is Sustainable Development ?')
+
 for i in range(len(result)):
   comment=result['comment'][i]
   if i % 2:
