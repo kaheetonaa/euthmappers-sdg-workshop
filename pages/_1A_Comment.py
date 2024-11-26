@@ -70,10 +70,7 @@ if "answer_submitted" not in st.session_state:
 
         #form
     comment = st.text_input("What is Sustainable Development?", "")
-    if not st.session_state.answer_submitted:
-        st.button('Submit', on_click=submit_answer)
-    else:
-        st.write('submitted!')
+    st.button('Submit', on_click=submit_answer)
 else:
     st.balloons()
     st.write('You have successfully submit your answer!')
