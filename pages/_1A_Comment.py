@@ -47,7 +47,6 @@ st.markdown("""
 @st.cache_resource
 def init_connection():
     return MongoClient("mongodb+srv://kuquanghuy:quanghuy123456@cluster0.6mzug.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
-st.session_state.answer_submitted=False
 client = init_connection()
 
 db=client['EuthMappers_Forum_241126']
@@ -63,9 +62,9 @@ def submit_answer():
     else:
             st.warning('you have to select your school and write your comment!')
 
-if not st.session_state.answer_submitted:
+if st.session_state.answer_submitted:
     st.balloons()
-    st.write('You have successfully submit your answer:')
+    st.write('You have successfully submit your answer:',comment)
 else:
     school = st.selectbox(
         "Where is your school",
