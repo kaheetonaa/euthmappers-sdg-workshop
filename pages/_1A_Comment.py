@@ -59,7 +59,7 @@ def submit_answer():
             post={'school':school,'comment':comment}
             collection.insert_one(post)
             st.session_state.answer_submitted=True
-            print(st.session_state.answer_submitted)
+            st.write(st.session_state.answer_submitted)
     else:
             st.warning('you have to select your school and write your comment!')
 
