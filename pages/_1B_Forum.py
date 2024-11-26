@@ -70,6 +70,18 @@ st.markdown("""
 }
 </style>
 """, unsafe_allow_html=True)
+@st.cache_resource
+def init_connection():
+    return MongoClient("mongodb+srv://kuquanghuy:quanghuy123456@cluster0.6mzug.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
+
+client = init_connection()
+
+db=client['EuthMappers_Forum_241126']
+collection=db['EuthMappers_Forum_241126']
+result=pd.DataFrame(list(collection.find().sort("_id", -1).limit(50)))
+
+result
+
 st.markdown("""<div class="bubble right">A: test abcdef abdcdefeghhh</div>""",unsafe_allow_html=True)
 st.write('')
 st.markdown("""<div class="bubble left">test abcdef abdcdefeghhh</div>""",unsafe_allow_html=True)
