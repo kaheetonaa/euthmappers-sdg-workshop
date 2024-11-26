@@ -140,7 +140,7 @@ if "answer_submitted" not in st.session_state:
     st.button('Submit', on_click=submit_answer)      
 else:
     st.balloons();
-    st.write(school+"✅You select the area at coordinate",str(st.session_state.location),'at the zoom of',str(st.session_state.zoom),'because of', comment)
+    st.write('You have sucessfully submitted!')
 
 #referencing
 options = st.selectbox(
