@@ -89,6 +89,7 @@ for i in range(len(result)):
     st.write(result['school'][i])
   else:
     st.markdown("""<div class="bubble left">test abcdef abdcdefeghhh</div>""",unsafe_allow_html=True)
+    st.write(result['school'][i])
 st.write('')
 
 st.markdown("""<div class="bubble right">A: test abcdef abdcdefeghhh</div>""",unsafe_allow_html=True)
