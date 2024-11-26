@@ -86,9 +86,9 @@ result=pd.DataFrame(list(collection.find().sort("_id", -1).limit(50)))
 for i in range(len(result)):
   comment=result['comment'][i]
   if i % 2:
-    st.markdown("""<div class="bubble right">{"""+comment+"""}</div>""",unsafe_allow_html=True)
+    st.markdown("""<div class="bubble right">"""+comment+"""</div>""",unsafe_allow_html=True)
     st.write(result['school'][i])
   else:
-    st.markdown("""<div class="bubble left">{"""+comment+"""}</div>""",unsafe_allow_html=True)
+    st.markdown("""<div class="bubble left">"""+comment+"""</div>""",unsafe_allow_html=True)
     st.write(result['school'][i])
 
