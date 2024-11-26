@@ -65,7 +65,7 @@ else:
         #form
     comment = st.text_input("What is Sustainable Development?", "")
     if st.button('Submit'):
-        if (comment!="")&(school!=None):
+        if (comment!="")&(school!=None)&(not st.session_state.answer_submitted):
             st.write(school, comment)
             post={'school':school,'comment':comment}
             collection.insert_one(post)
