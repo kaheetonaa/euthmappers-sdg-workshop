@@ -89,6 +89,5 @@ for i in range(len(result)):
     st.markdown("""<div class="bubble right">"""+comment+"""</div>""",unsafe_allow_html=True)
     st.write(result['school'][i])
   else:
-    st.markdown("""<div class="bubble left">"""+comment+"""</div>""",unsafe_allow_html=True)
-    st.write(result['school'][i])
+    st.markdown("""<div class="bubble left">"""+comment+"""</div><br><b>"""+result['school'][i]+"""</b>""",unsafe_allow_html=True)
 
