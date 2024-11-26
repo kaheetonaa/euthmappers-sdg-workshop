@@ -61,6 +61,9 @@ school = st.selectbox(
 #form
 comment = st.text_input("What is Sustainable Development?", "")
 
+if submit:
+    print('haha')
+
 
 
 
