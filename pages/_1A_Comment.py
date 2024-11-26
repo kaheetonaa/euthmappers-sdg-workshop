@@ -59,8 +59,9 @@ def submit_answer():
             post={'school':school,'comment':comment}
             collection.insert_one(post)
             st.session_state.answer_submitted=True
+            print(st.session_state.answer_submitted)
     else:
-            st.write('you have to select your school and write your comment!')
+            st.warning('you have to select your school and write your comment!')
 
 if st.session_state.answer_submitted:
     st.balloons()
@@ -77,6 +78,7 @@ if not st.session_state.answer_submitted:
     st.button('Submit', on_click=submit_answer)
 else:
     st.write('submitted!')
+
     
 
 
