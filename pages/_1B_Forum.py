@@ -83,7 +83,13 @@ db=client['EuthMappers_Forum_241126']
 collection=db['EuthMappers_Forum_241126']
 result=pd.DataFrame(list(collection.find().sort("_id", -1).limit(50)))
 
-st.write(len(result))
+for i in len(result):
+  if i % 2:
+    st.markdown("""<div class="bubble right">A: test abcdef abdcdefeghhh</div>""",unsafe_allow_html=True)
+    st.write('')
+  else:
+    st.markdown("""<div class="bubble left">test abcdef abdcdefeghhh</div>""",unsafe_allow_html=True)
+st.write('')
 
 st.markdown("""<div class="bubble right">A: test abcdef abdcdefeghhh</div>""",unsafe_allow_html=True)
 st.write('')
