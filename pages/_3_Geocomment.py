@@ -138,35 +138,35 @@ if "answer_submitted" not in st.session_state:
     #form
     comment = st.text_input("Zoom to an area where you think suitable for the project then write down your comment. Finally hit Enter to submit", "")
     st.button('Submit', on_click=submit_answer)      
+
+    #referencing
+    options = st.selectbox(
+        "Choose the organization to see their active/archived projects",options=org_index,format_func=lambda x: org_name[x]
+    )
+
+    url = "https://tasking-manager-tm4-production-api.hotosm.org/api/v2/projects/?orderBy=id&orderByType=ASC&mappingTypesExact=false&page=1&createdByMe=false&mappedByMe=false&favoritedByMe=false&managedByMe=false&basedOnMyInterests=false&omitMapResults=false&downloadAsCSV=false&organisationName="+org_str[options]
+    archived=st.checkbox('Archived projects')
+    if archived:
+        url=url+"&projectStatuses=ARCHIVED"
+
+    if options!=0:
+        data = load_json_from_url(url)
+        geom_data=data['mapResults']['features']
+        gdf = gpd.GeoDataFrame.from_features(geom_data).set_crs(epsg=4326)
+        gdf['x']=gdf.geometry.x
+        gdf['y']=gdf.geometry.y
+        gdf['dummy']=1
+        gdf['projecId-str']=gdf['projectId'].map(str)
+
+    if 'location' not in st.session_state:
+        st.session_state.location = [0, 0]
+    if 'zoom' not in st.session_state:
+        st.session_state.zoom = 5
+    #map
+    a=drawMap(popup,st.session_state.location,st.session_state.zoom)
 else:
     st.balloons();
     st.write('You have sucessfully submitted!')
-
-#referencing
-options = st.selectbox(
-    "Choose the organization to see their active/archived projects",options=org_index,format_func=lambda x: org_name[x]
-)
-
-url = "https://tasking-manager-tm4-production-api.hotosm.org/api/v2/projects/?orderBy=id&orderByType=ASC&mappingTypesExact=false&page=1&createdByMe=false&mappedByMe=false&favoritedByMe=false&managedByMe=false&basedOnMyInterests=false&omitMapResults=false&downloadAsCSV=false&organisationName="+org_str[options]
-archived=st.checkbox('Archived projects')
-if archived:
-    url=url+"&projectStatuses=ARCHIVED"
-
-if options!=0:
-    data = load_json_from_url(url)
-    geom_data=data['mapResults']['features']
-    gdf = gpd.GeoDataFrame.from_features(geom_data).set_crs(epsg=4326)
-    gdf['x']=gdf.geometry.x
-    gdf['y']=gdf.geometry.y
-    gdf['dummy']=1
-    gdf['projecId-str']=gdf['projectId'].map(str)
-
-if 'location' not in st.session_state:
-    st.session_state.location = [0, 0]
-if 'zoom' not in st.session_state:
-    st.session_state.zoom = 5
-#map
-a=drawMap(popup,st.session_state.location,st.session_state.zoom)
 
 
 
