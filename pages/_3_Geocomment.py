@@ -137,7 +137,7 @@ if "answer_submitted" not in st.session_state:
     comment = st.text_input("Zoom to an area where you think suitable for the project then write down your comment. Finally hit Enter to submit", "")
     st.button('Submit', on_click=submit_answer)      
 else:
-    st.baloons();
+    st.balloons();
     st.write(school+"✅You select the area at coordinate",str(st.session_state.location),'at the zoom of',str(st.session_state.zoom),'because of', comment)
 
 #referencing
