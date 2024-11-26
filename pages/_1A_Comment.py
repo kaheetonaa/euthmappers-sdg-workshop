@@ -73,10 +73,10 @@ else:
 
         #form
     comment = st.text_input("What is Sustainable Development?", "")
-if not st.session_state.answer_submitted:
-    st.button('Submit', on_click=submit_answer)
-else:
-    st.write('submitted!')
+    if not st.session_state.answer_submitted:
+        st.button('Submit', on_click=submit_answer)
+    else:
+        st.write('submitted!')
 
     
 
