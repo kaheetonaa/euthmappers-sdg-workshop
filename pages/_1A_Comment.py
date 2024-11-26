@@ -62,10 +62,7 @@ def submit_answer():
     else:
             st.warning('you have to select your school and write your comment!')
 
-if st.session_state.answer_submitted:
-    st.balloons()
-    st.write('You have successfully submit your answer!')
-else:
+if not st.session_state.answer_submitted:
     school = st.selectbox(
         "Where is your school",
         ("🇮🇹Italy", "🇵🇹Portugal", "🇷🇴Romania", "🇸🇰Slovakia", "🇪🇸Spain"),index=None
@@ -77,6 +74,9 @@ else:
         st.button('Submit', on_click=submit_answer)
     else:
         st.write('submitted!')
+else:
+    st.balloons()
+    st.write('You have successfully submit your answer!')
 
     
 
