@@ -53,7 +53,7 @@ st.session_state.answer_submitted=False
 db=client['EuthMappers_Forum_241126']
 collection=db['EuthMappers_Forum_241126']
 
-if st.session_state.answer_submitted:
+if st.session_state.answer_submitted==True:
     st.balloons()
     st.write('You have successfully submit your answer:',comment)
 else:
