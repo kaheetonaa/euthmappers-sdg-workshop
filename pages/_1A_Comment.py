@@ -53,7 +53,16 @@ client = init_connection()
 db=client['EuthMappers_Forum_241126']
 collection=db['EuthMappers_Forum_241126']
 
-if st.session_state.answer_submitted==True:
+def submit_answer():
+    if (comment!="")&(school!=None):
+            st.write(school, comment)
+            post={'school':school,'comment':comment}
+            collection.insert_one(post)
+            st.session_state.answer_submitted=True
+    else:
+            st.write('you have to select your school and write your comment!')
+
+if st.session_state.answer_submitted:
     st.balloons()
     st.write('You have successfully submit your answer:',comment)
 else:
@@ -64,14 +73,10 @@ else:
 
         #form
     comment = st.text_input("What is Sustainable Development?", "")
-    if st.button('Submit'):
-        if (comment!="")&(school!=None)&(not st.session_state.answer_submitted):
-            st.write(school, comment)
-            post={'school':school,'comment':comment}
-            collection.insert_one(post)
-            st.session_state.answer_submitted=True
-        else:
-            st.write('you have to select your school and write your comment!')
+if st.button('Submit'):
+    if not st.session_state.answer_submitted:
+        submit_answer()
+    
 
 
 
