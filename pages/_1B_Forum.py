@@ -90,5 +90,5 @@ for i in range(len(result)):
     <b>"""+result['school'][i]+"""</b>""",unsafe_allow_html=True)
   else:
     st.markdown("""<div class="bubble left">"""+comment+"""</div>
-    <b>"""+result['school'][i]+"""</b>""",unsafe_allow_html=True)
+    <b style='text-align: right;'>"""+result['school'][i]+"""</b>""",unsafe_allow_html=True)
 
