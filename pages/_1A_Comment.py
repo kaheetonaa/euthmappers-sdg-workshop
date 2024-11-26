@@ -62,7 +62,7 @@ def submit_answer():
     else:
             st.warning('you have to select your school and write your comment!')
 
-if not st.session_state.answer_submitted:
+if "answer_submitted" not in st.session_state:
     school = st.selectbox(
         "Where is your school",
         ("🇮🇹Italy", "🇵🇹Portugal", "🇷🇴Romania", "🇸🇰Slovakia", "🇪🇸Spain"),index=None
