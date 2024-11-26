@@ -53,4 +53,14 @@ client = init_connection()
 db=client['EuthMappers_Forum_241126']
 collection=db['EuthMappers_Forum_241126']
 
+school = st.selectbox(
+        "Where is your school",
+        ("🇮🇹Italy", "🇵🇹Portugal", "🇷🇴Romania", "🇸🇰Slovakia", "🇪🇸Spain"),index=None
+        )
+
+#form
+comment = st.text_input("What is Sustainable Development?", "")
+
+
+
 
