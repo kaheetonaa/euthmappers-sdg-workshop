@@ -49,7 +49,7 @@ def init_connection():
     return MongoClient("mongodb+srv://kuquanghuy:quanghuy123456@cluster0.6mzug.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
 
 client = init_connection()
-st.session_state.answer_submitted=False
+
 db=client['EuthMappers_Forum_241126']
 collection=db['EuthMappers_Forum_241126']
 
