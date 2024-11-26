@@ -87,8 +87,8 @@ for i in range(len(result)):
   comment=result['comment'][i]
   if i % 2:
     st.markdown("""<div class="bubble right">"""+comment+"""</div>
-    <b class="right">"""+result['school'][i]+"""</b>""",unsafe_allow_html=True)
+    <div class="right">"""+result['school'][i]+"""</div>""",unsafe_allow_html=True)
   else:
     st.markdown("""<div class="bubble left">"""+comment+"""</div>
-    <b class="left">"""+result['school'][i]+"""</b>""",unsafe_allow_html=True)
+    <div class="left">"""+result['school'][i]+"""</div>""",unsafe_allow_html=True)
 
