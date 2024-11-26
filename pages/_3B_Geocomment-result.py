@@ -23,7 +23,7 @@ result_polygon['Polygon']=gpd.GeoSeries.from_wkt(result_polygon['bounds'])
 result_polygon['Point']=gpd.GeoSeries.from_wkt(result_polygon['center'])
 result_polygon=gpd.GeoDataFrame(result_polygon,geometry=result_polygon['Polygon']).set_crs(epsg=4326)
 
-
+result_poligon
 
 st.markdown("""
 
@@ -83,7 +83,7 @@ for _, r in result_polygon.iterrows():
     
     poi_j=gpd.GeoSeries(r["Point"]).to_json()
     poi_j= folium.GeoJson(data=poi_j
-                        ,marker=folium.Marker(icon=folium.Icon(icon='earth-americas',prefix='fa'))
+                        ,marker=folium.Marker(icon=folium.DivIcon(html=f"""<div>{hehe}</div>"""))
                         ,style_function=lambda x: {"markerColor": "red"}
                         ,zoom_on_click=True)
     folium.Popup(r["comment"]).add_to(poi_j)
