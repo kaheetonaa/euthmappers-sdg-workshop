@@ -51,7 +51,7 @@ client = init_connection()
 
 db=client['EuthMappers_Forum_241126']
 collection=db['EuthMappers_Forum_241126']
-
+st.title('What is Sustainable Development ?')
 def submit_answer():
     if (comment!="")&(school!=None):
             st.write(school, comment)

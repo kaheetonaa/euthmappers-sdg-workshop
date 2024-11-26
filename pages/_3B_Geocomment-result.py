@@ -66,6 +66,7 @@ st.markdown("""
 }
 </style>
 """, unsafe_allow_html=True)
+st.title('Where humanitarian mapping with Sustainable Development Goals taken in consideration can be applied?')
 if st.button('Refresh'):
     #This would empty everything inside the container
     st.empty()

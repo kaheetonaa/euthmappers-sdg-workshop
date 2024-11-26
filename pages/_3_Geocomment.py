@@ -90,7 +90,7 @@ def style_function(feature):
         </div>
     """
     return {"html": markup}
-
+st.title('Where humanitarian mapping with Sustainable Development Goals taken in consideration can be applied?')
 @st.fragment
 def drawMap(popup,location,zoom):
     map = folium.Map(
