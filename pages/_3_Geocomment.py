@@ -122,20 +122,20 @@ org_name=["None","UN Mappers", "Missing Maps", "Médecins Sans Frontières","USA
 org_index = list(range(len(org_name)))
 
 #select natioin
-school = st.selectbox(
-        "Where is your school",
-        ("🇮🇹Italy", "🇵🇹Portugal", "🇷🇴Romania", "🇸🇰Slovakia", "🇪🇸Spain"),index=None
-        )
-
-#form
-comment = st.text_input("Zoom to an area where you think suitable for the project then write down your comment. Finally hit Enter to submit", "")
-
-if "answer_submitted" not in st.session_state:
-    if st.button('Submit'):
-        if (comment!="")&(school!=None):
+def submit_answer():
+    if (comment!="")&(school!=None):
             post={'school':school,'bounds':'POLYGON (('+str(st.session_state.bounds['_southWest']['lng'])+' '+str(st.session_state.bounds['_southWest']['lat'])+','+str(st.session_state.bounds['_southWest']['lng'])+' '+str(st.session_state.bounds['_northEast']['lat'])+','+str(st.session_state.bounds['_northEast']['lng'])+' '+str(st.session_state.bounds['_northEast']['lat'])+','+str(st.session_state.bounds['_northEast']['lng'])+' '+str(st.session_state.bounds['_southWest']['lat'])+','+str(st.session_state.bounds['_southWest']['lng'])+' '+str(st.session_state.bounds['_southWest']['lat'])+'))','comment':comment,'center':'POINT ('+str(st.session_state.location[1])+' '+str(st.session_state.location[0])+')','zoom':st.session_state.zoom}
             collection.insert_one(post)
             st.session_state.answer_submitted=True;
+
+if "answer_submitted" not in st.session_state:
+    school = st.selectbox(
+        "Where is your school",
+        ("🇮🇹Italy", "🇵🇹Portugal", "🇷🇴Romania", "🇸🇰Slovakia", "🇪🇸Spain"),index=None
+        )
+    #form
+    comment = st.text_input("Zoom to an area where you think suitable for the project then write down your comment. Finally hit Enter to submit", "")
+    st.button('Submit', on_click=submit_answer)      
 else:
     st.baloons();
     st.write(school+"✅You select the area at coordinate",str(st.session_state.location),'at the zoom of',str(st.session_state.zoom),'because of', comment)
