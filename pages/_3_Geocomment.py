@@ -15,8 +15,8 @@ def init_connection():
 
 client = init_connection()
 
-db=client['EuthMappers_Geocomment']
-collection=db['EuthMappers_Geocomment']
+db=client['EuthMappers_Geocomment_241126']
+collection=db['EuthMappers_Geocomment_241126']
 
 
 st.markdown("""
