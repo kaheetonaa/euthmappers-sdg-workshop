@@ -47,7 +47,7 @@ st.markdown("""
 @st.cache_resource
 def init_connection():
     return MongoClient("mongodb+srv://kuquanghuy:quanghuy123456@cluster0.6mzug.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
-
+st.session_state.answer_submitted=False
 client = init_connection()
 
 db=client['EuthMappers_Forum_241126']
