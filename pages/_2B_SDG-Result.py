@@ -80,7 +80,7 @@ with container1:
     st.html("<img src='https://raw.githubusercontent.com/kaheetonaa/streamlit_quizz_template_euth/refs/heads/main/asset/logo.png' class='center'/>")
     st.markdown(""" ___""")
     result0
-    for i in range(16):
+    for i in range(17):
         if(i<9):
             st.image('asset/sdg-icon/E-WEB-Goal-0'+str(i+1)+'.png',width=100)
         else:
@@ -88,7 +88,7 @@ with container1:
         #drawChart
         chart[i] = alt.Chart(result0,title='question 01').mark_bar().encode(
             x='school',
-            y=str(i),
+            y=str(i+1),
             color=color
         ).add_params(
             click
