@@ -33,7 +33,7 @@ st.markdown("""
         text-align: center
     }
     
-    div[data-testid='stAppViewBlockContainer']{
+    div[data-testid='stVerticalBlockBorderWrapper']{
         background-color: #ffffffC0;
     }
             .center {
@@ -66,7 +66,6 @@ def submit_answer():
 with container1:
     st.html("<img src='https://raw.githubusercontent.com/kaheetonaa/streamlit_quizz_template_euth/refs/heads/main/asset/logo.png' class='center'/>")
     st.markdown(""" ___""")
-
     if "answer_submitted" not in st.session_state:
         school = st.selectbox(
             "Where is your school",
