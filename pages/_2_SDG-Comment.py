@@ -54,7 +54,7 @@ db=client['EuthMappers_SDG_241126']
 collection=db['EuthMappers_SDG_241126']
 st.title('Which SDG is .... ?')
 def submit_answer():
-    if (comment!=[0]*17)&(school!=None):
+    if (comment!=[None]*17)&(school!=None):
             st.write(school, comment)
             post={'school':school,'comment':comment}
             collection.insert_one(post)
@@ -70,7 +70,7 @@ if "answer_submitted" not in st.session_state:
         )
 
         #form
-    comment=[0]*17
+    comment=[None]*17
     for i in range(16):
         if(i<9):
             st.image('asset/sdg-icon/E-WEB-Goal-0'+str(i+1)+'.png',width=100)
