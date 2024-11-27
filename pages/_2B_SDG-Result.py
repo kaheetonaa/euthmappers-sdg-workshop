@@ -40,7 +40,7 @@ st.markdown("""
         text-align: center
     }
     
-    .stElementContainer{
+    .stVerticalBlock{
         background-color: white;
     }
             .center {
