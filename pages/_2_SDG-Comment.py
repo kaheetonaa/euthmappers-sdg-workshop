@@ -57,8 +57,8 @@ def submit_answer():
     if (comment!=[None]*17)&(school!=None):
             st.write(school, comment)
             post={'school':school}
-            for i in range(16):
-                post[str(i)]=comment[i]
+            for i in range(17):
+                post[str(i+1)]=comment[i]
             collection.insert_one(post)
             st.session_state.answer_submitted=True
             st.write(st.session_state.answer_submitted)
@@ -73,7 +73,7 @@ if "answer_submitted" not in st.session_state:
 
         #form
     comment=[None]*17
-    for i in range(16):
+    for i in range(17):
         if(i<9):
             st.image('asset/sdg-icon/E-WEB-Goal-0'+str(i+1)+'.png',width=100)
         else:
