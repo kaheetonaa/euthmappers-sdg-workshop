@@ -72,14 +72,14 @@ color = alt.condition(
     alt.value('lightgray')
 )
 result=pd.DataFrame(list(collection.find()))
-result_arr=[]
+chart=[]*17
 result0=result.groupby(['school']).mean(numeric_only=True).reset_index()
 
 with container1:
     st.html("<img src='https://raw.githubusercontent.com/kaheetonaa/streamlit_quizz_template_euth/refs/heads/main/asset/logo.png' class='center'/>")
     st.markdown(""" ___""")
     result0
-    chart1A = alt.Chart(result0,title='question 01').mark_bar().encode(
+    chart[0] = alt.Chart(result0,title='question 01').mark_bar().encode(
             x='school',
             y='1',
             color=color
@@ -101,7 +101,7 @@ with container1:
         titleFont='comfortaa',
         titleFontSize=16
         ).configure_bar(size=30)
-    st.altair_chart(chart1A,theme=None)
+    st.altair_chart(chart[0],theme=None)
     for i in range(16):
         if(i<9):
             st.image('asset/sdg-icon/E-WEB-Goal-0'+str(i+1)+'.png',width=100)
