@@ -88,7 +88,7 @@ with container1:
         #drawChart
         chart[i] = alt.Chart(result0,title='question 01').mark_bar().encode(
             x='school',
-            y=binding_range(str(i+1),max=5,min=0),
+            y=alt.Y(str(i+1),scale=alt.Scale(domain=[0, 15])),
             color=color
         ).add_params(
             click
