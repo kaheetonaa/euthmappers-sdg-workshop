@@ -70,7 +70,7 @@ if "answer_submitted" not in st.session_state:
         )
 
         #form
-    st.image('asset/sdg-icon/E-WEB-Goal-01.png')
+    st.image('asset/sdg-icon/E-WEB-Goal-01.png',width=100)
     comment = st.multiselect(
         "What are your favorite colors",
         ['Goal 1. No poverty',
