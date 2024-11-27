@@ -40,8 +40,8 @@ st.markdown("""
         text-align: center
     }
     
-    .stVerticalBlock{
-        background-color: white;
+    div[data-testid='stVerticalBlockBorderWrapper']{
+        background-color: #ffffff50;
     }
             .center {
     display: block;
