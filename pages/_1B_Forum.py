@@ -2,11 +2,7 @@ import streamlit as st
 import pandas as pd
 from pymongo import MongoClient
 
-st.set_page_config(
-  page_title="🌐 EuthMappers quizz result",
-  page_icon="✅",
-  layout="wide"
-)
+st.set_page_config(layout="wide")
 st.markdown("""
 
 <style>
@@ -88,7 +84,8 @@ collection=db['EuthMappers_Forum_241126']
 result=pd.DataFrame(list(collection.find().sort("_id", -1).limit(50)))
 
 st.title('What is Sustainable Development ?')
-
+st.html("<img src='https://raw.githubusercontent.com/kaheetonaa/streamlit_quizz_template_euth/refs/heads/main/asset/logo.png' class='center'/>")
+st.markdown(""" ___""")
 if st.button('Refresh'):
     #This would empty everything inside the container
     st.empty()
@@ -100,4 +97,3 @@ for i in range(len(result)):
   else:
     st.markdown("""<div class="bubble left">"""+comment+"""</div>
     <div class="left">"""+result['school'][i]+"""</div>""",unsafe_allow_html=True)
-
