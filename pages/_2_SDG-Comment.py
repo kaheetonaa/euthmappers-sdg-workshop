@@ -70,9 +70,8 @@ if "answer_submitted" not in st.session_state:
         )
 
         #form
-    comment=[]
+    comment=[0]*17
     for i in range(16):
-        comment.append(-9999)
         st.image('asset/sdg-icon/E-WEB-Goal-0'+str(i+1)+'.png',width=100)
         comment[i]=st.feedback("stars")
     st.button('Submit', on_click=submit_answer)
