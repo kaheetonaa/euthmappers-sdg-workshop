@@ -79,7 +79,7 @@ result0=result.groupby(['school']).mean(numeric_only=True).reset_index()
 with container1:
     st.html("<img src='https://raw.githubusercontent.com/kaheetonaa/streamlit_quizz_template_euth/refs/heads/main/asset/logo.png' class='center'/>")
     st.markdown(""" ___""")
-    result0
+    #result0
     for i in range(17):
         if(i<9):
             st.image('asset/sdg-icon/E-WEB-Goal-0'+str(i+1)+'.png',width=100)
@@ -88,7 +88,7 @@ with container1:
         #drawChart
         chart[i] = alt.Chart(result0,title='question 01').mark_bar().encode(
             x='school',
-            y=alt.Y(str(i+1),scale=alt.Scale(domain=[0, 5])),
+            y=alt.Y(str(i+1),scale=alt.Scale(domain=[0, 5])), #set maximum value (0,5)
             color=color
         ).add_params(
             click
