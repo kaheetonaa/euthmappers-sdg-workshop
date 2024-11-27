@@ -84,11 +84,7 @@ collection=db['EuthMappers_Forum_241126']
 result=pd.DataFrame(list(collection.find().sort("_id", -1).limit(50)))
 
 st.title('What is Sustainable Development ?')
-st.html("<img src='https://raw.githubusercontent.com/kaheetonaa/streamlit_quizz_template_euth/refs/heads/main/asset/logo.png' class='center'/>")
-st.markdown(""" ___""")
-if st.button('Refresh'):
-    #This would empty everything inside the container
-    st.empty()
+
 for i in range(len(result)):
   comment=result['comment'][i]
   if i % 2:
