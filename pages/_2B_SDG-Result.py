@@ -80,6 +80,9 @@ with container1:
     st.html("<img src='https://raw.githubusercontent.com/kaheetonaa/streamlit_quizz_template_euth/refs/heads/main/asset/logo.png' class='center'/>")
     st.markdown(""" ___""")
     #result0
+    if st.button('Refresh'):
+    #This would empty everything inside the container
+        st.empty()
     for i in range(17):
         if(i<9):
             st.image('asset/sdg-icon/E-WEB-Goal-0'+str(i+1)+'.png',width=100)
