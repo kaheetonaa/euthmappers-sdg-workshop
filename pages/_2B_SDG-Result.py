@@ -73,7 +73,7 @@ color = alt.condition(
 )
 result=pd.DataFrame(list(collection.find()))
 result_arr=[]
-result_arr[0]=result.groupby(['1','school']).count().reset_index().groupby('1').mean()
+result_arr[0]=result.groupby(['1','school']).sum().reset_index().groupby('1').mean()
 
 with container1:
     st.html("<img src='https://raw.githubusercontent.com/kaheetonaa/streamlit_quizz_template_euth/refs/heads/main/asset/logo.png' class='center'/>")
