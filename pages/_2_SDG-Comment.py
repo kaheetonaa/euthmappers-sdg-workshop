@@ -50,9 +50,9 @@ def init_connection():
     return MongoClient("mongodb+srv://kuquanghuy:quanghuy123456@cluster0.6mzug.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
 client = init_connection()
 
-db=client['EuthMappers_Forum_241126']
-collection=db['EuthMappers_Forum_241126']
-st.title('What is Sustainable Development ?')
+db=client['EuthMappers_SDG_241126']
+collection=db['EuthMappers_SDG_241126']
+st.title('Which SDG is .... ?')
 def submit_answer():
     if (comment!="")&(school!=None):
             st.write(school, comment)
