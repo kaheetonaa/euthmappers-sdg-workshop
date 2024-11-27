@@ -67,6 +67,8 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 st.title('Where humanitarian mapping with Sustainable Development Goals taken in consideration can be applied?')
+st.html("<img src='https://raw.githubusercontent.com/kaheetonaa/streamlit_quizz_template_euth/refs/heads/main/asset/logo.png' class='center'/>")
+st.markdown(""" ___""")
 if st.button('Refresh'):
     #This would empty everything inside the container
     st.empty()
