@@ -78,7 +78,7 @@ with container1:
     st.markdown(""" ___""")
     result
     chart1A = alt.Chart(result0,title='question 01').mark_bar().encode(
-            x='1',
+            x='school',
             y='1',
             color=color
         ).add_params(
