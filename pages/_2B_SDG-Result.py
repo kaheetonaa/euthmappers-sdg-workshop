@@ -72,7 +72,7 @@ color = alt.condition(
     alt.value('lightgray')
 )
 result=pd.DataFrame(list(collection.find()))
-chart=[]*17
+chart=[None]*17
 result0=result.groupby(['school']).mean(numeric_only=True).reset_index()
 
 with container1:
