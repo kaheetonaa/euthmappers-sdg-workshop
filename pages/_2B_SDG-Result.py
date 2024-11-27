@@ -73,11 +73,11 @@ color = alt.condition(
 )
 result=pd.DataFrame(list(collection.find()))
 result0=result.groupby(['1','school']).count().reset_index()
-result0
+
 with container1:
     st.html("<img src='https://raw.githubusercontent.com/kaheetonaa/streamlit_quizz_template_euth/refs/heads/main/asset/logo.png' class='center'/>")
     st.markdown(""" ___""")
-    result
+    result0
     chart1A = alt.Chart(result0,title='question 01').mark_bar().encode(
             x='school',
             y='1',
