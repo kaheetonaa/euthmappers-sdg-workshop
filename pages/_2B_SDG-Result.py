@@ -62,11 +62,27 @@ collection=db['EuthMappers_SDG_241126']
 st.title('Which SDG is .... ?')
 container1 = st.container()
 placeholder = st.empty()
+domain = ["🇮🇹Italy", "🇵🇹Portugal", "🇷🇴Romania", "🇸🇰Slovakia", "🇪🇸Spain"]
+range_ = ['#B9F3E3', '#F5716C', '#F5CC81', '#6799A3', '#F5996F']
+click = alt.selection_point(encodings=['color'])
+
+        color = alt.condition(
+        click,
+        alt.Color('school:N').scale(domain=domain,range=range_),
+        alt.value('lightgray')
+)
 result=pd.DataFrame(list(collection.find()))
 with container1:
     st.html("<img src='https://raw.githubusercontent.com/kaheetonaa/streamlit_quizz_template_euth/refs/heads/main/asset/logo.png' class='center'/>")
     st.markdown(""" ___""")
     result
+    chart1A = alt.Chart(result0,title='question 01').mark_bar().encode(
+            x='1',
+            y='1',
+            color=color
+        ).add_params(
+            click
+        ).properties(height=300,width=300)
     for i in range(16):
         if(i<9):
             st.image('asset/sdg-icon/E-WEB-Goal-0'+str(i+1)+'.png',width=100)
