@@ -64,25 +64,26 @@ def submit_answer():
             st.write(st.session_state.answer_submitted)
     else:
             st.warning('you have to select your school and write your comment!')
+container1 = st.container()
+with container1:
+    if "answer_submitted" not in st.session_state:
+        school = st.selectbox(
+            "Where is your school",
+            ("🇮🇹Italy", "🇵🇹Portugal", "🇷🇴Romania", "🇸🇰Slovakia", "🇪🇸Spain"),index=None
+            )
 
-if "answer_submitted" not in st.session_state:
-    school = st.selectbox(
-        "Where is your school",
-        ("🇮🇹Italy", "🇵🇹Portugal", "🇷🇴Romania", "🇸🇰Slovakia", "🇪🇸Spain"),index=None
-        )
-
-        #form
-    comment=[None]*17
-    for i in range(17):
-        if(i<9):
-            st.image('asset/sdg-icon/E-WEB-Goal-0'+str(i+1)+'.png',width=100)
-        else:
-            st.image('asset/sdg-icon/E-WEB-Goal-'+str(i+1)+'.png',width=100)
-        comment[i]=st.feedback("stars",key=i)
-    st.button('Submit', on_click=submit_answer)
-else:
-    st.balloons()
-    st.write('You have successfully submit your answer!')
+            #form
+        comment=[None]*17
+        for i in range(17):
+            if(i<9):
+                st.image('asset/sdg-icon/E-WEB-Goal-0'+str(i+1)+'.png',width=100)
+            else:
+                st.image('asset/sdg-icon/E-WEB-Goal-'+str(i+1)+'.png',width=100)
+            comment[i]=st.feedback("stars",key=i)
+        st.button('Submit', on_click=submit_answer)
+    else:
+        st.balloons()
+        st.write('You have successfully submit your answer!')
 
     
 
