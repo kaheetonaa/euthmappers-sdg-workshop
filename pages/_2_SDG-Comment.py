@@ -55,7 +55,7 @@ collection=db['EuthMappers_SDG_241126']
 st.title('Which SDG is .... ?')
 def submit_answer():
     if (comment!=[None]*17)&(school!=None):
-            st.write(school, comment)
+            #st.write(school, comment)
             post={'school':school}
             for i in range(17):
                 if comment[i]==None:
@@ -64,7 +64,7 @@ def submit_answer():
                     post[str(i+1)]=comment[i]+1
             collection.insert_one(post)
             st.session_state.answer_submitted=True
-            st.write(st.session_state.answer_submitted)
+            #st.write(st.session_state.answer_submitted)
     else:
             st.warning('you have to select your school and write your comment!')
 container1 = st.container()
