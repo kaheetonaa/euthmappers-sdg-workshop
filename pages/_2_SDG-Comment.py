@@ -70,7 +70,11 @@ if "answer_submitted" not in st.session_state:
         )
 
         #form
-    comment = st.text_input("What is Sustainable Development?", "")
+    comment = st.multiselect(
+    "What are your favorite colors",
+    ["Green", "Yellow", "Red", "Blue"],
+    [],
+)
     st.button('Submit', on_click=submit_answer)
 else:
     st.balloons()
