@@ -78,8 +78,8 @@ result_arr0=result.groupby(['school']).mean(numeric_only=True).reset_index()
 with container1:
     st.html("<img src='https://raw.githubusercontent.com/kaheetonaa/streamlit_quizz_template_euth/refs/heads/main/asset/logo.png' class='center'/>")
     st.markdown(""" ___""")
-    result_arr0
-    chart1A = alt.Chart(result_arr0,title='question 01').mark_bar().encode(
+    result0
+    chart1A = alt.Chart(result0,title='question 01').mark_bar().encode(
             x='school',
             y='1',
             color=color
