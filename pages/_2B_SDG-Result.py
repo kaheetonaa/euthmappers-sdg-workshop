@@ -60,6 +60,8 @@ client = init_connection()
 db=client['EuthMappers_SDG_241126']
 collection=db['EuthMappers_SDG_241126']
 st.title('Which SDG is .... ?')
+container1 = st.container()
+placeholder = st.empty()
 for i in range(16):
     if(i<9):
         st.image('asset/sdg-icon/E-WEB-Goal-0'+str(i+1)+'.png',width=100)
