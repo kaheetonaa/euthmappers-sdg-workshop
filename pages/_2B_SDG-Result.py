@@ -66,10 +66,10 @@ domain = ["🇮🇹Italy", "🇵🇹Portugal", "🇷🇴Romania", "🇸🇰Slova
 range_ = ['#B9F3E3', '#F5716C', '#F5CC81', '#6799A3', '#F5996F']
 click = alt.selection_point(encodings=['color'])
 
-        color = alt.condition(
-        click,
-        alt.Color('school:N').scale(domain=domain,range=range_),
-        alt.value('lightgray')
+color = alt.condition(
+    click,
+    alt.Color('school:N').scale(domain=domain,range=range_),
+    alt.value('lightgray')
 )
 result=pd.DataFrame(list(collection.find()))
 with container1:
