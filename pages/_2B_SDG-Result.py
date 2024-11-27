@@ -40,7 +40,7 @@ st.markdown("""
         text-align: center
     }
     
-    div[data-testid='stAppViewBlockContainer']{
+    .stElementContainer{
         background-color: white;
     }
             .center {
