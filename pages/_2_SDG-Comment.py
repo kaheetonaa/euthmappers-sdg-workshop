@@ -11,7 +11,7 @@ st.markdown("""
     }
     div[data-baseweb="select"] > div {
     background-color: #62cbec10;
-            color:white;
+            color:black;
             font-family: 'Comfortaa', sans-serif;
     }
 
