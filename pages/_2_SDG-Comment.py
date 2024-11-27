@@ -70,28 +70,9 @@ if "answer_submitted" not in st.session_state:
         )
 
         #form
+    comment = []
     st.image('asset/sdg-icon/E-WEB-Goal-01.png',width=100)
-    comment = st.multiselect(
-        "What are your favorite colors",
-        ['Goal 1. No poverty',
-        'Goal 2. Zero hunger',
-        'Goal 3. Good health and well-being',
-        'Goal 4. Quality education',
-        'Goal 5. Gender equality',
-        'Goal 6. Clean water and sanitation',
-        'Goal 7. Affordable and clean energy',
-        'Goal 8. Decent work and economic growth',
-        'Goal 9. Industry, innovation and infrastructure',
-        'Goal 10. Reduced inequalities',
-        'Goal 11. Sustainable cities and communities',
-        'Goal 12. Responsible consumption and production',
-        'Goal 13. Climate action',
-        'Goal 14. Life below water',
-        'Goal 15. Life on land',
-        'Goal 16. Peace, Justice and strong institution',
-        'Goal 17. Partnerships for the goals'],
-        [],
-    )
+    commet[0]=st.feedback(stars)
     st.button('Submit', on_click=submit_answer)
 else:
     st.balloons()
