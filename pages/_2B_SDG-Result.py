@@ -83,7 +83,22 @@ with container1:
             color=color
         ).add_params(
             click
-        ).properties(height=300,width=300)
+        ).properties(height=300,width=300).configure(background='white',countTitle='number').configure_axis(
+        labelFontSize=16,
+        titleFontSize=16,
+        labelFont='comfortaa',
+        titleFont='comfortaa',
+        ).configure_legend(
+        labelFontSize=16,
+        titleFontSize=16,
+        labelFont='comfortaa',
+        titleFont='comfortaa',
+        ).configure_axisY(title=None).configure_headerRow(
+        labelFont='comfortaa',
+        labelFontSize=12,
+        titleFont='comfortaa',
+        titleFontSize=16
+        ).configure_bar(size=30)
     st.altair_chart(chart1A,theme=None)
     for i in range(16):
         if(i<9):
