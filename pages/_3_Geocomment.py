@@ -62,7 +62,8 @@ st.markdown("""
 }
 </style>
 """, unsafe_allow_html=True)
-
+st.html("<img src='https://raw.githubusercontent.com/kaheetonaa/streamlit_quizz_template_euth/refs/heads/main/asset/logo.png' class='center'/>")
+st.markdown(""" ___""")
 popup = GeoJsonPopup(
     fields=['projecId-str']
 )
