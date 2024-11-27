@@ -73,6 +73,7 @@ color = alt.condition(
 )
 result=pd.DataFrame(list(collection.find()))
 result0=result.groupby(['1','school']).count().reset_index()
+result0
 with container1:
     st.html("<img src='https://raw.githubusercontent.com/kaheetonaa/streamlit_quizz_template_euth/refs/heads/main/asset/logo.png' class='center'/>")
     st.markdown(""" ___""")
