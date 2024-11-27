@@ -61,7 +61,7 @@ def submit_answer():
                 if comment[i]==None:
                     post[str(i+1)]=0
                 else:
-                    post[str(i+1)]=comment[i]
+                    post[str(i+1)]=comment[i]+1
             collection.insert_one(post)
             st.session_state.answer_submitted=True
             st.write(st.session_state.answer_submitted)
