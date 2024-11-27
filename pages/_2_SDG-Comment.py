@@ -70,6 +70,7 @@ if "answer_submitted" not in st.session_state:
         )
 
         #form
+    comment=[]
     for i in range(16):
         comment.append(-9999)
         st.image('asset/sdg-icon/E-WEB-Goal-0'+str(i+1)+'.png',width=100)
