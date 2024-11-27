@@ -73,13 +73,13 @@ color = alt.condition(
 )
 result=pd.DataFrame(list(collection.find()))
 result_arr=[]
-result_arr[0]=result.groupby(['1','school']).sum().reset_index().groupby('1').mean()
+result_arr0=result.groupby(['1','school']).sum().reset_index().groupby('1').mean()
 
 with container1:
     st.html("<img src='https://raw.githubusercontent.com/kaheetonaa/streamlit_quizz_template_euth/refs/heads/main/asset/logo.png' class='center'/>")
     st.markdown(""" ___""")
-    result_arr[0]
-    chart1A = alt.Chart(result_arr[0],title='question 01').mark_bar().encode(
+    result_arr0
+    chart1A = alt.Chart(result_arr0,title='question 01').mark_bar().encode(
             x='school',
             y='1',
             color=color
