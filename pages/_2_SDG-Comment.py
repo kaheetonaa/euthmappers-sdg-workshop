@@ -54,7 +54,7 @@ db=client['EuthMappers_SDG_241126']
 collection=db['EuthMappers_SDG_241126']
 st.title('Which SDG is .... ?')
 def submit_answer():
-    if (comment!==[0]*17)&(school!=None):
+    if (comment!=[0]*17)&(school!=None):
             st.write(school, comment)
             post={'school':school,'comment':comment}
             collection.insert_one(post)
