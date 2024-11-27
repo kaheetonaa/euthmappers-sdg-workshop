@@ -62,9 +62,11 @@ collection=db['EuthMappers_SDG_241126']
 st.title('Which SDG is .... ?')
 container1 = st.container()
 placeholder = st.empty()
+result=pd.DataFrame(list(collection.find()))
 with container1:
     st.html("<img src='https://raw.githubusercontent.com/kaheetonaa/streamlit_quizz_template_euth/refs/heads/main/asset/logo.png' class='center'/>")
     st.markdown(""" ___""")
+    result
     for i in range(16):
         if(i<9):
             st.image('asset/sdg-icon/E-WEB-Goal-0'+str(i+1)+'.png',width=100)
