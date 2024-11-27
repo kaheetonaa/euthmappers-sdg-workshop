@@ -69,6 +69,8 @@ def submit_answer():
             st.warning('you have to select your school and write your comment!')
 container1 = st.container()
 with container1:
+    st.html("<img src='https://raw.githubusercontent.com/kaheetonaa/streamlit_quizz_template_euth/refs/heads/main/asset/logo.png' class='center'/>")
+    st.markdown(""" ___""")
     if "answer_submitted" not in st.session_state:
         school = st.selectbox(
             "Where is your school",
