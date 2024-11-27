@@ -1,6 +1,10 @@
 import streamlit as st
 from pymongo import MongoClient
-st.set_page_config(layout="wide")
+st.set_page_config(
+  page_title="🌐 EuthMappers quizz",
+  page_icon="❓",
+  layout="wide"
+)
 st.markdown("""
 <style>
     @import url('https://fonts.googleapis.com/css?family=Comfortaa:wght@100&display=swap'); 

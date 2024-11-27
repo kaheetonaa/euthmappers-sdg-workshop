@@ -2,7 +2,11 @@ import streamlit as st
 import pandas as pd
 from pymongo import MongoClient
 
-st.set_page_config(layout="wide")
+st.set_page_config(
+  page_title="🌐 EuthMappers quizz result",
+  page_icon="✅",
+  layout="wide"
+)
 st.markdown("""
 
 <style>

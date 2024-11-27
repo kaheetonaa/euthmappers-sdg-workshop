@@ -7,7 +7,11 @@ import folium
 from folium.features import GeoJsonPopup
 from streamlit_folium import st_folium
 
-st.set_page_config(layout="wide")
+st.set_page_config(
+  page_title="🌐 EuthMappers quizz result",
+  page_icon="✅",
+  layout="wide"
+)
 
 @st.cache_resource
 def init_connection():

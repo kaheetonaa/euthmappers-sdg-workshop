@@ -7,7 +7,11 @@ from streamlit_folium import st_folium
 from pymongo import MongoClient
 
 
-st.set_page_config(layout="wide")
+st.set_page_config(
+  page_title="🌐 EuthMappers quizz",
+  page_icon="❓",
+  layout="wide"
+)
 
 @st.cache_resource
 def init_connection():
