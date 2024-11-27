@@ -33,8 +33,8 @@ st.markdown("""
         text-align: center
     }
     
-    div[data-testid='stAppViewBlockContainer']{
-        background-color: #62cbec10;
+    div[data-testid='stVerticalBlockBorderWrapper']{
+        background-color: #ffffffC0;
     }
             .center {
     display: block;
