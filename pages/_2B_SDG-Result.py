@@ -41,7 +41,7 @@ st.markdown("""
     }
     
     div[data-testid='stVerticalBlockBorderWrapper']{
-        background-color: #ffffff50;
+        background-color: #ffffffC0;
     }
             .center {
     display: block;
