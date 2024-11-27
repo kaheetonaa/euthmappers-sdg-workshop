@@ -76,9 +76,9 @@ with container1:
         comment=[None]*17
         for i in range(17):
             if(i<9):
-                st.image('asset/sdg-icon/E-WEB-Goal-0'+str(i+1)+'.png',width=100)
+                st.image('asset/sdg-icon/E-WEB-Goal-0'+str(i+1)+'.png',width=200)
             else:
-                st.image('asset/sdg-icon/E-WEB-Goal-'+str(i+1)+'.png',width=100)
+                st.image('asset/sdg-icon/E-WEB-Goal-'+str(i+1)+'.png',width=200)
             comment[i]=st.feedback("stars",key=i)
         st.button('Submit', on_click=submit_answer)
     else:
