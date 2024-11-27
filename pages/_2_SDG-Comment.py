@@ -58,7 +58,7 @@ def submit_answer():
             st.write(school, comment)
             post={'school':school}
             for i in range(16):
-                post[str(i):comment[i]]
+                post[str(i)]=comment[i]
             collection.insert_one(post)
             st.session_state.answer_submitted=True
             st.write(st.session_state.answer_submitted)
