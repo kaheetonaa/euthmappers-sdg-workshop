@@ -74,7 +74,8 @@ color = alt.condition(
 result=pd.DataFrame(list(collection.find()))
 chart=[None]*17
 result0=result.groupby(['school']).mean(numeric_only=True).reset_index()
-    
+
+st.write(result)    
 
 with container1:
     st.html("<img src='https://raw.githubusercontent.com/kaheetonaa/streamlit_quizz_template_euth/refs/heads/main/asset/logo.png' class='center'/>")
