@@ -21,7 +21,7 @@ client = init_connection()
 
 db=client['EuthMappers_Geocomment_241126']
 collection=db['EuthMappers_Geocomment_241126']
-result_polygon=pd.DataFrame(list(collection.find().sort("_id", -1))
+result_polygon=pd.DataFrame(list(collection.find().sort("_id", -1)))
 
 result_polygon['Polygon']=gpd.GeoSeries.from_wkt(result_polygon['bounds'])
 result_polygon['Point']=gpd.GeoSeries.from_wkt(result_polygon['center'])
