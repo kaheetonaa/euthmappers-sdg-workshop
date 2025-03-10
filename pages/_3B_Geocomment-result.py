@@ -21,11 +21,13 @@ client = init_connection()
 
 db=client['EuthMappers_Geocomment_241126']
 collection=db['EuthMappers_Geocomment_241126']
-result_polygon=pd.DataFrame(list(collection.find().sort("_id", -1).limit(50)))
+result_polygon=pd.DataFrame(list(collection.find().sort("_id", -1))
 
 result_polygon['Polygon']=gpd.GeoSeries.from_wkt(result_polygon['bounds'])
 result_polygon['Point']=gpd.GeoSeries.from_wkt(result_polygon['center'])
 result_polygon=gpd.GeoDataFrame(result_polygon,geometry=result_polygon['Polygon']).set_crs(epsg=4326)
+
+st.write(result_polygon)
 
 st.markdown("""
 
