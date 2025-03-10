@@ -81,9 +81,11 @@ client = init_connection()
 
 db=client['EuthMappers_Forum_241126']
 collection=db['EuthMappers_Forum_241126']
-result=pd.DataFrame(list(collection.find().sort("_id", -1).limit(50)))
+result=pd.DataFrame(list(collection.find().sort("_id", -1)))
 
 st.title('What is Sustainable Development ?')
+
+st.write(result)
 
 for i in range(len(result)):
   comment=result['comment'][i]
